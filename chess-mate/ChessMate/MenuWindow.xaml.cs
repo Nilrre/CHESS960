@@ -20,10 +20,11 @@ namespace ChessMate
     /// </summary>
     public partial class MenuWindow : Window
     {
-        public MenuWindow(RoutedEventHandler newGame, RoutedEventHandler loadGame, RoutedEventHandler exitGame)
+        public MenuWindow(RoutedEventHandler newGame, RoutedEventHandler loadGame, RoutedEventHandler exitGame, RoutedEventHandler chess960)
         {
             InitializeComponent();
             New.Click += newGame;
+            Chess960.Click += chess960;
             Load.Click += loadGame;
             Exit.Click += exitGame;
         }

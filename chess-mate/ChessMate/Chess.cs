@@ -25,7 +25,7 @@ namespace ChessMate
 
         public Chess(RoutedEventHandler ExitGame)
         {
-            menu = new MenuWindow(NewGame, LoadGame, ExitGame);
+            menu = new MenuWindow(NewGame, LoadGame, ExitGame, NewChess960Game);
             ShowMenu();
         }
 
@@ -38,9 +38,40 @@ namespace ChessMate
             newGame("INVALID_PATH");
         }
 
+        private void NewChess960Game(object sender, RoutedEventArgs e)
+        {
+            newChess960("INVALID_PATH");
+        }
+
 
         Timer t;
         AutoResetEvent are;
+
+        public void newChess960(string loadedGamePath)
+        {
+            menu.Hide();
+
+            gamePath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ChessMate";
+            lastMove = null;
+            computerMove = null;
+            turn = "white";
+            board = new Chess960Board();
+            boardWindow = new BoardWindow();
+            boardWindow.Show();
+            boardWindow.Closing += ExitGame;
+
+            boardWindow.repaint();
+
+            if (loadedGamePath.Equals("INVALID_PATH"))
+            {
+                DataHandler.writeToJSON();
+            }
+
+            are = new AutoResetEvent(true);
+            t = new Timer(checkforchange, are, 1000, 5000);
+
+        }
+
         public void newGame(string loadedGamePath)
         {
             menu.Hide();

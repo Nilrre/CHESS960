@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChessMate
 {
-    class Board
+    class Chess960Board : Board
     {
-        protected Dictionary<Position, Piece> board;
-        public Board()
+        public Chess960Board()
         {
             board = new Dictionary<Position, Piece>();
 
@@ -33,10 +32,25 @@ namespace ChessMate
                 color = "white";
             }
 
-            color = "black";
-            for (int y = 0; y < 8; y += 7)
-            {
 
+            //this is what needs to be changed
+            color = "black";
+            Dictionary<int, string> pieceList = new Dictionary<int, string>()
+            {
+                { 0, "rook"},
+                { 1, "knight"},
+                { 2, "bishop"},
+                { 3, "queen"},
+                { 4, "king"},
+                { 5, "bishop"},
+                { 6, "knight"},
+                { 7, "rook"}
+            };
+
+            for (int y = 0; y < 8; y++)
+            {
+                int num = getRandomNumber();
+                
                 Position p = new Position(0, y);
                 board[p] = new Piece("rook", color, p);
 
@@ -65,47 +79,10 @@ namespace ChessMate
             }
 
         }
-        public Piece at(Position p)
-        {
-            return board[p];
-        }
 
-        public void clear()
+        private int getRandomNumber()
         {
-            for (int y = 0; y < 8; y++)
-            {
-                for (int x = 0; x < 8; ++x)
-                {
-                    Position p = new Position(x, y);
-                    board[p] = new Piece("blank", "none", p);
-                }
-            }
-        }
-
-        public void set(Position position, Piece piece)
-        {
-            board[position] = piece;
-        }
-
-        public Position findKing(string color)
-        {
-            for (int x = 0; x < 8; ++x)
-            {
-                for (int y = 0; y < 8; ++y)
-                {
-                    Piece current = at(new Position(x, y));
-                    if (current.getType() == "king" && current.getColor() == color)
-                    {
-                        return new Position(x, y);
-                    }
-                }
-            }
-            return null;
-        }
-
-        public Dictionary<Position, Piece> getBoard()
-        {
-            return board;
+            throw new NotImplementedException();
         }
     }
 }
