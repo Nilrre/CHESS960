@@ -86,9 +86,9 @@
     </Compile>
     <Compile Include="Chess.cs" />
     <Compile Include="AI.cs" />
+    <Compile Include="Chess960Board.cs" />
     <Compile Include="ChessMove.cs" />
     <Compile Include="Board.cs" />
-    <Compile Include="DataHandler.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Rules.cs" />
     <Compile Include="Piece.cs" />

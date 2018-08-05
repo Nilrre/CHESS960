@@ -55,17 +55,17 @@ namespace ChessMate
             lastMove = null;
             computerMove = null;
             turn = "white";
-            board = new Chess960Board();
+            Chess960Board cb;
+            do
+            {
+                board = new Chess960Board();
+                cb= (Chess960Board)board;
+            } while (cb.getUsedCount() != 8);
             boardWindow = new BoardWindow();
             boardWindow.Show();
             boardWindow.Closing += ExitGame;
 
             boardWindow.repaint();
-
-            if (loadedGamePath.Equals("INVALID_PATH"))
-            {
-                DataHandler.writeToJSON();
-            }
 
             are = new AutoResetEvent(true);
             t = new Timer(checkforchange, are, 1000, 5000);
@@ -87,11 +87,6 @@ namespace ChessMate
 
             boardWindow.repaint();
 
-            if (loadedGamePath.Equals("INVALID_PATH"))
-            {
-                DataHandler.writeToJSON();
-            }
-
             are = new AutoResetEvent(true);
             t = new Timer(checkforchange, are, 1000, 5000);
 
@@ -99,7 +94,7 @@ namespace ChessMate
 
         private void checkforchange(object state)
         {
-            DataHandler.checkForChanges();
+            
         }
 
         private void LoadGame(object sender, RoutedEventArgs e)
@@ -128,7 +123,6 @@ namespace ChessMate
 
         public static void loadGame()
         {
-            DataHandler.loadFromJSON();
             lastMove = null;
             boardWindow.repaint();
 
@@ -266,7 +260,6 @@ namespace ChessMate
                 if (turn == "white")
                 {
                     turn = "black";
-                    DataHandler.writeToJSON();
                     boardWindow.repaint();
                     AIThread = new Thread(AIMove);
                     AIThread.Start();
@@ -274,7 +267,6 @@ namespace ChessMate
                 else
                 {
                     turn = "white";
-                    DataHandler.writeToJSON();
                 }
             }
             else
@@ -325,7 +317,8 @@ namespace ChessMate
 
         public static Piece pieceRemoved;
 
-        private static void move(Position from, Position to, bool realMove){
+        private static void move(Position from, Position to, bool realMove)
+        {
             lastMove = new ChessMove(from, to);
             Piece p1 = board.at(from);
             Piece p2 = board.at(to);
@@ -367,7 +360,7 @@ namespace ChessMate
             }
             move(from, to, true);
         }
-        
+
         public static void tempMove(Position from, Position to)
         {
             move(from, to, false);

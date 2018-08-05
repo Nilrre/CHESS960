@@ -8,6 +8,14 @@ namespace ChessMate
 {
     class Chess960Board : Board
     {
+        private List<int> usedAlready = new List<int>();
+        private Random random = new Random();
+
+        public int getUsedCount()
+        {
+            return usedAlready.Count;
+        }
+
         public Chess960Board()
         {
             board = new Dictionary<Position, Piece>();
@@ -34,7 +42,6 @@ namespace ChessMate
 
 
             //this is what needs to be changed
-            color = "black";
             Dictionary<int, string> pieceList = new Dictionary<int, string>()
             {
                 { 0, "rook"},
@@ -46,43 +53,116 @@ namespace ChessMate
                 { 6, "knight"},
                 { 7, "rook"}
             };
-
+            string firstBishopsPlacement = "";
             for (int y = 0; y < 8; y++)
             {
                 int num = getRandomNumber();
-                
-                Position p = new Position(0, y);
-                board[p] = new Piece("rook", color, p);
+                while (usedAlready.Contains(num))
+                {
+                    num = getRandomNumber();
+                }
 
-                p = new Position(1, y);
-                board[p] = new Piece("knight", color, p);
+                Position p = new Position(y, 7);
+                Position p2 = new Position(y, 0);
+                switch (num)
+                {
+                    case 0:
+                    case 4:
+                    case 7:
+                        if (usedAlready.Contains(0))
+                        {
+                            if (usedAlready.Contains(4))
+                            {
+                                board[p2] = new Piece("rook", "black", p2);
+                                board[p] = new Piece("rook", "white", p);
+                                usedAlready.Add(7);
 
-                p = new Position(2, y);
-                board[p] = new Piece("bishop", color, p);
-
-                p = new Position(3, y);
-                board[p] = new Piece("queen", color, p);
-
-                p = new Position(4, y);
-                board[p] = new Piece("king", color, p);
-
-                p = new Position(5, y);
-                board[p] = new Piece("bishop", color, p);
-
-                p = new Position(6, y);
-                board[p] = new Piece("knight", color, p);
-
-                p = new Position(7, y);
-                board[p] = new Piece("rook", color, p);
-
-                color = "white";
+                            }
+                            else
+                            {
+                                board[p2] = new Piece("king", "black", p2);
+                                board[p] = new Piece("king", "white", p);
+                                usedAlready.Add(4);
+                            }
+                        }
+                        else
+                        {
+                            board[p2] = new Piece("rook", "black", p2);
+                            board[p] = new Piece("rook", "white", p);
+                            usedAlready.Add(0);
+                        }
+                        break;
+                    case 1:
+                    case 6:
+                        board[p2] = new Piece("knight", "black", p2);
+                        board[p] = new Piece("knight", "white", p);
+                        if (usedAlready.Contains(1))
+                        {
+                            usedAlready.Add(6);
+                        }
+                        else
+                        {
+                            usedAlready.Add(1);
+                        }
+                        break;
+                    case 2:
+                    case 5:
+                        if (firstBishopsPlacement == "")
+                        {
+                            board[p2] = new Piece("bishop", "black", p2);
+                            board[p] = new Piece("bishop", "white", p);
+                            if (y % 2 == 0)
+                            {
+                                firstBishopsPlacement = "white";
+                            }
+                            else
+                            {
+                                firstBishopsPlacement = "black";
+                            }
+                            usedAlready.Add(2);
+                        }
+                        else if (firstBishopsPlacement == "white")
+                        {
+                            if (y % 2 == 0)
+                            {
+                                y = y - 1;
+                            }
+                            else
+                            {
+                                board[p2] = new Piece("bishop", "black", p2);
+                                board[p] = new Piece("bishop", "white", p);
+                                usedAlready.Add(5);
+                            }
+                        }
+                        else if (firstBishopsPlacement == "black")
+                        {
+                            if (y % 2 == 0)
+                            {
+                                board[p2] = new Piece("bishop", "black", p2);
+                                board[p] = new Piece("bishop", "white", p);
+                                usedAlready.Add(5);
+                            }
+                            else
+                            {
+                                y = y - 1;
+                            }
+                        }
+                        break;
+                    case 3:
+                        board[p2] = new Piece("queen", "black", p2);
+                        board[p] = new Piece("queen", "white", p);
+                        usedAlready.Add(3);
+                        break;
+                    default:
+                        break;
+                }
             }
-
         }
 
         private int getRandomNumber()
         {
-            throw new NotImplementedException();
+            return random.Next(0, 9);
         }
+
     }
 }
