@@ -1,0 +1,14 @@
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\ChessMate.Tests.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\ChessMate.Tests.pdb
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\ChessMate.exe
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\Microsoft.Pex.Framework.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\Microsoft.ExtendedReflection.Reasoning.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\Microsoft.ExtendedReflection.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\ChessMate.pdb
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\ChessMate.exe.config
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\bin\Debug\Microsoft.Pex.Framework.xml
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\obj\Debug\ChessMate.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\obj\Debug\ChessMate.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\obj\Debug\ChessMate.Tests.dll
+C:\Users\Errlin Deleon\Desktop\Chess\CHESSNEWFEATURE\CHESS960\chess-mate\ChessMate.Tests\obj\Debug\ChessMate.Tests.pdb

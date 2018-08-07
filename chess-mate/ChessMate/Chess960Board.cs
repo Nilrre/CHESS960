@@ -164,5 +164,38 @@ namespace ChessMate
             return random.Next(0, 9);
         }
 
+        public List<Position> findRooks(string color)
+        {
+            List<Position> listOfPositions = new List<Position>();
+            for (int x = 0; x < 8; ++x)
+            {
+                for (int y = 0; y < 8; ++y)
+                {
+                    Piece current = at(new Position(x, y));
+                    if (current.getType() == "rook" && current.getColor() == color)
+                    {
+                        listOfPositions.Add(new Position(x, y));
+                    }
+                }
+            }
+            return listOfPositions;
+        }
+
+        public List<Position> findBishops(string color)
+        {
+            List<Position> listOfPositions = new List<Position>();
+            for (int x = 0; x < 8; ++x)
+            {
+                for (int y = 0; y < 8; ++y)
+                {
+                    Piece current = at(new Position(x, y));
+                    if (current.getType() == "bishop" && current.getColor() == color)
+                    {
+                        listOfPositions.Add(new Position(x, y));
+                    }
+                }
+            }
+            return listOfPositions;
+        }
     }
 }

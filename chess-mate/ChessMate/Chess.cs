@@ -46,7 +46,7 @@ namespace ChessMate
 
         Timer t;
         AutoResetEvent are;
-
+        
         public void newChess960(string loadedGamePath)
         {
             menu.Hide();
@@ -59,7 +59,7 @@ namespace ChessMate
             do
             {
                 board = new Chess960Board();
-                cb= (Chess960Board)board;
+                cb = (Chess960Board)board;
             } while (cb.getUsedCount() != 8);
             boardWindow = new BoardWindow();
             boardWindow.Show();
@@ -94,7 +94,7 @@ namespace ChessMate
 
         private void checkforchange(object state)
         {
-            
+
         }
 
         private void LoadGame(object sender, RoutedEventArgs e)
